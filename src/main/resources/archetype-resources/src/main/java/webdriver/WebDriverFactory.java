@@ -18,6 +18,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.opera.core.systems.OperaDriver;
+import com.selenium2.util.Browser;
+import com.selenium2.webdriver.AuthenticatedHtmlUnitDriver;
+
 import ${groupId}.util.Browser;
 
 /*
@@ -36,6 +39,9 @@ public class WebDriverFactory {
 
 	/* Platform constants */
 	public static final String WINDOWS = "windows";
+	public static final String ANDROID = "android";
+	public static final String XP = "xp";
+	public static final String VISTA = "vista";
 	public static final String MAC = "mac";
 	public static final String LINUX = "linux";
 
@@ -187,9 +193,18 @@ public class WebDriverFactory {
 			capability.setPlatform(Platform.MAC);
 		} else if (LINUX.equalsIgnoreCase(platform)) {
 			capability.setPlatform(Platform.LINUX);
-		} else {
+		} else if (XP.equalsIgnoreCase(platform)) {
+			capability.setPlatform(Platform.XP);
+		} else if (VISTA.equalsIgnoreCase(platform)) {
+			capability.setPlatform(Platform.VISTA);
+		} else if (WINDOWS.equalsIgnoreCase(platform)) {
 			capability.setPlatform(Platform.WINDOWS);
+		} else if (ANDROID.equalsIgnoreCase(platform)) {
+			capability.setPlatform(Platform.ANDROID);
+		} else {
+			capability.setPlatform(Platform.ANY);
 		}
+		
 		if (version != null) {
 			capability.setVersion(version);
 		}

@@ -3,6 +3,8 @@ Introduction
 
 This archetype generates a small Maven project with Selenium 2 and TestNG embedded to make it easy to get started testing with Selenium Web Driver.
 
+This project provides just a starting point to get up to speed with Selenium 2 infrastructure.
+
 To install the archetype in your local repo:
 
 	git clone git://github.com/sebarmeli/Selenium2-Java-QuickStart-Archetype.git
@@ -32,6 +34,9 @@ from **WebDriverFactory** class is in charge of generating the instance of the W
 Those parameters are retrieved from the *src/main/resources/application.properties* file. You can also populate the properties file from command line (through -D<property in mvn command or through
 Hudson/Jenkins).
 
+**TestBase** class provides 30 seconds as interval for polling element from the DOM (implicity wait), and also it takes care of closing the driver when all the tests are executed in the suite. 
+(Feel free to update all this values according to your needs)
+
 **HomePageTest** class (in *src/test/java/pages*) is just an example of a test class for testing the homepage of a web application. This test class accepts the *path* parameter
  (set in *src/test/resources/testng.xml)* defining the path appended to the base URL (in case of the home page, usually just "/"). In the setup method of this class, the **PageFactory** class is used
  to help supporting the **PageObject** pattern (see below for more information). Briefly according to this pattern, each page is an object. *src/main/java/pages/HomePage* class is an example of 
@@ -57,6 +62,16 @@ For more info around TestNG framework, go to http://testng.org/doc/index.html. I
 Page Object pattern
 -------------------
 For more info around this pattern, read this wiki page: http://code.google.com/p/selenium/wiki/PageObjects
+
+
+Integration with SauceLabs
+-------------------
+You can easily integrate the project with SauceLabs, great service to launch tests in the cloud. You need to retrieve your SauceLab key and setting the "grid2.hub" property with thid syntax:
+*http://<username>:<token>@ondemand.saucelabs.com:80/wd/hub* 
+
+Further Notes
+-------
+The project is just a starting point, feel free to modify it according to your needs. 
 
 Credits
 -------

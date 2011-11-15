@@ -5,6 +5,7 @@ package ${groupId}.pages;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -19,7 +20,6 @@ import org.testng.annotations.BeforeClass;
 
 import ${groupId}.util.PropertyLoader;
 import ${groupId}.util.Browser;
-import ${groupId}.util.PropertyLoader;
 import ${groupId}.webdriver.WebDriverFactory;
 
 /*
@@ -55,6 +55,7 @@ public class TestBase {
 		
 		webDriver = WebDriverFactory.getInstance(gridHubUrl, browser, username,
 				password);
+		webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
 	@AfterSuite(alwaysRun = true)
