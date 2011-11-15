@@ -17,8 +17,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 
-import com.selenium2.util.PropertyLoader;
-
+import ${groupId}.util.PropertyLoader;
 import ${groupId}.util.Browser;
 import ${groupId}.util.PropertyLoader;
 import ${groupId}.webdriver.WebDriverFactory;
