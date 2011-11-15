@@ -8,11 +8,13 @@ import java.net.URL;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.android.AndroidDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.iphone.IPhoneDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -24,7 +26,7 @@ import com.selenium2.webdriver.AuthenticatedHtmlUnitDriver;
 import ${groupId}.util.Browser;
 
 /*
- * Factory to instantiate a WebDriver object. It returns an instance of the browser driver or an instance of RemoteWebDriver
+ * Factory to instantiate a WebDriver object. It returns an instance of the driver (local invocation) or an instance of RemoteWebDriver
  * 
  * @author Sebastiano Armeli-Battana
  */
@@ -36,6 +38,7 @@ public class WebDriverFactory {
 	public static final String OPERA = "opera";
 	public static final String INTERNET_EXPLORER = "ie";
 	public static final String HTML_UNIT = "htmlunit";
+	public static final String IPHONE = "iphone";
 
 	/* Platform constants */
 	public static final String WINDOWS = "windows";
@@ -63,7 +66,7 @@ public class WebDriverFactory {
 			String username, String password) {
 
 		WebDriver webDriver = null;
-		
+
 		DesiredCapabilities capability = new DesiredCapabilities();
 		String browserName = browser.getName();
 		capability.setJavascriptEnabled(true);
@@ -74,9 +77,10 @@ public class WebDriverFactory {
 		}
 
 		if (CHROME.equals(browserName)) {
-			capability.setBrowserName(CHROME);
+			capability = DesiredCapabilities.chrome();
 		} else if (FIREFOX.equals(browserName)) {
-
+			capability = DesiredCapabilities.firefox();
+			
 			FirefoxProfile ffProfile = new FirefoxProfile();
 
 			// Authenication Hack for Firefox
@@ -85,20 +89,24 @@ public class WebDriverFactory {
 						255);
 				capability.setCapability(FirefoxDriver.PROFILE, ffProfile);
 			}
-			capability.setBrowserName(FIREFOX);
+			
 			capability.setCapability(CapabilityType.TAKES_SCREENSHOT, true);
 		} else if (INTERNET_EXPLORER.equals(browserName)) {
 
+			capability = DesiredCapabilities.internetExplorer();
 			capability
-					.setCapability(
-							InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
-							true);
-			capability.setBrowserName(INTERNET_EXPLORER);
+			.setCapability(
+					InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
+					true);
 		} else if (OPERA.equals(browserName)) {
-			capability.setBrowserName(OPERA);
+			capability = DesiredCapabilities.opera();
+		} else if (ANDROID.equals(browserName)) {
+			capability = DesiredCapabilities.android();
+		} else if (IPHONE.equals(browserName)) {
+			capability = DesiredCapabilities.iphone();
 		} else {
 
-			capability.setBrowserName(HTML_UNIT);
+			capability = DesiredCapabilities.htmlUnit();
 			// HTMLunit Check
 			if (username != null && password != null) {
 				webDriver = (HtmlUnitDriver) AuthenticatedHtmlUnitDriver
@@ -137,7 +145,7 @@ public class WebDriverFactory {
 	public static WebDriver getInstance(String browser, String username,
 			String password) {
 
-		WebDriver webDriver;
+		WebDriver webDriver = null;
 
 		if (CHROME.equals(browser)) {
 			setChromeDriver();
@@ -160,6 +168,16 @@ public class WebDriverFactory {
 
 		} else if (OPERA.equals(browser)) {
 			webDriver = new OperaDriver();
+
+		} else if (IPHONE.equals(browser)) {
+			try {
+				webDriver = new IPhoneDriver();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (ANDROID.equals(browser)) {
+			webDriver = new AndroidDriver();
 
 		} else {
 
@@ -204,7 +222,7 @@ public class WebDriverFactory {
 		} else {
 			capability.setPlatform(Platform.ANY);
 		}
-		
+
 		if (version != null) {
 			capability.setVersion(version);
 		}
@@ -216,7 +234,8 @@ public class WebDriverFactory {
 	 */
 	private static void setChromeDriver() {
 		String os = System.getProperty("os.name").toLowerCase().substring(0, 3);
-		String chromeBinary = "src/main/resources/drivers/chrome/chromedriver" + (os.equals("win") ? ".exe" : "");
+		String chromeBinary = "src/main/resources/drivers/chrome/chromedriver"
+				+ (os.equals("win") ? ".exe" : "");
 		System.setProperty("webdriver.chrome.driver", chromeBinary);
 	}
 
