@@ -14,8 +14,8 @@ Now, you can use the archetype in a new project typing:
     mvn archetype:generate -DarchetypeGroupId=com.sebarmeli -DarchetypeArtifactId=selenium2-quickstart-archetype -DarchetypeVersion=0.0.1-SNAPSHOT -DgroupId=<mygroupId> -DartifactId=<myartifactId>
     						 
 where :
-* mygroupId : group id of the project you are creating
-* myartifactId : artifact id of the project you are creating
+- 'mygroupId' : group id of the project you are creating;
+- 'myartifactId' : artifact id of the project you are creating
 
 It uses Java bindings for Selenium version 2.12.0, OperaDriver version 0.7.3 and TestNG version 6.3.
 
