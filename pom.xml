@@ -10,9 +10,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sebarmeli</groupId>
 	<artifactId>selenium2-java-quickstart-archetype</artifactId>
-	<version>0.1</version>
+	<version>0.2</version>
 	<name>Selenium2 Java QuickStart Archetype</name>
-	<packaging>jar</packaging>
+	<packaging>maven-archetype</packaging>
 	<description>Generates a QuickStart project with Selenium 2 and TestNG</description>
 	<properties>
 		<archetype.version>2.1</archetype.version>
