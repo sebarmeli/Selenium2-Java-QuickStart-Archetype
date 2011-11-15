@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.util;
+package ${groupId}.util;
 
 import java.io.IOException;
 import java.util.Properties;

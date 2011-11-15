@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.webdriver;
+package ${groupId}.webdriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
