@@ -44,7 +44,8 @@ Hudson/Jenkins).
  decouple the DOM element from the functionalities offered by the page.
  
  
-In case of test failure, a screenshot will be taken if the driver supports that feature.
+In the TestBase class, I commented out the method launched after the suite runs and it takes screenshots in case of failure. Feel free to uncomment it out if you need and if your driver supports that
+funcitonality. (at the moment it's not supported on mobile devices)
 
 
 Adding Chrome Driver to the project
