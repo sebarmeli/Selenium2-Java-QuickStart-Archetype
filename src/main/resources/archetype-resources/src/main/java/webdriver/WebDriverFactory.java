@@ -20,8 +20,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.opera.core.systems.OperaDriver;
-import com.selenium2.util.Browser;
-import com.selenium2.webdriver.AuthenticatedHtmlUnitDriver;
+import ${groupId}.util.Browser;
+import ${groupId}.webdriver.AuthenticatedHtmlUnitDriver;
 
 import ${groupId}.util.Browser;
 
