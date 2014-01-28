@@ -49,6 +49,8 @@ public class WebDriverFactory {
 	public static final String VISTA = "vista";
 	public static final String MAC = "mac";
 	public static final String LINUX = "linux";
+        
+        private WebDriverFactory(){}
 
 	/*
 	 * Factory method to return a RemoteWebDriver instance given the url of the
