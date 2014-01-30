@@ -19,7 +19,7 @@ public class AuthenticatedHtmlUnitDriver extends HtmlUnitDriver {
 	private static String USERNAME;
 	private static String PASSWORD;
 
-	public AuthenticatedHtmlUnitDriver() {
+	private AuthenticatedHtmlUnitDriver() {
 	}
 
 	public static WebDriver create(String username, String password) {
