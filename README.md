@@ -7,8 +7,8 @@ This project provides just a starting point to get up to speed with Selenium 2 i
 
 To install the archetype in your local repo:
 
-	git clone git://github.com/sebarmeli/Selenium2-Java-QuickStart-Archetype.git
-	cd Selenium2-Java-Quickstart-Archetype
+	git clone https://github.com/sebarmeli/Selenium2-Java-QuickStart-Archetype.git
+	cd Selenium2-Java-QuickStart-Archetype
 	mvn install
 
 Now, you can use the archetype in a new project typing:
