@@ -13,12 +13,11 @@ To install the archetype in your local repo:
 
 Now, you can use the archetype in a new project typing:
 
-    mvn archetype:generate -DarchetypeGroupId=com.sebarmeli -DarchetypeArtifactId=selenium2-java-quickstart-archetype -DarchetypeVersion=0.2 -DgroupId=<mygroupId> -DartifactId=<myartifactId>
+    mvn archetype:generate -DarchetypeGroupId=com.sebarmeli -DarchetypeArtifactId=selenium2-java-quickstart-archetype -DarchetypeVersion=0.3 -DgroupId=<mygroupId> -DartifactId=<myartifactId>
     						 
 where *mygroupId* : group id of the project you are creating; *myartifactId* : artifact id of the project you are creating
 
-It uses Java bindings for Selenium version 2.12.0, OperaDriver version 0.7.3 and TestNG version 6.3.
-
+It uses Java bindings for Selenium version 2.47.2 and TestNG version 6.9.6. OperaDriver 1.5, Appium's ios-driver 3.2.0 and Selendroid 0.16.0 are also included for convenience.
 
 Project Structure
 -----------------------------------
