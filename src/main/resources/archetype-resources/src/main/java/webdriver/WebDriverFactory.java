@@ -8,23 +8,19 @@ import java.net.URL;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.android.AndroidDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.iphone.IPhoneDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 import com.opera.core.systems.OperaDriver;
 import ${groupId}.util.Browser;
 import ${groupId}.webdriver.AuthenticatedHtmlUnitDriver;
-
-import ${groupId}.util.Browser;
 
 /*
  * Factory to instantiate a WebDriver object. It returns an instance of the driver (local invocation) or an instance of RemoteWebDriver
@@ -103,7 +99,7 @@ public class WebDriverFactory {
 					InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
 					true);
 		} else if (OPERA.equals(browserName)) {
-			capability = DesiredCapabilities.opera();
+			capability = DesiredCapabilities.operaBlink();
         } else if (SAFARI.equals(browserName)) {
             capability = DesiredCapabilities.safari();
 		} else if (ANDROID.equals(browserName)) {
@@ -180,17 +176,13 @@ public class WebDriverFactory {
             isSupportedPlatform(browser);
             webDriver = new SafariDriver();
 
-        } else if (IPHONE.equals(browser)) {
-			try {
-				webDriver = new IPhoneDriver();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+    } else if (IPHONE.equals(browser)) {
+      webDriver = new RemoteWebDriver(DesiredCapabilities.iphone());
+      
+    } else if (ANDROID.equals(browser)) {
+      webDriver = new RemoteWebDriver(DesiredCapabilities.android());
 
-		} else if (ANDROID.equals(browser)) {
-			webDriver = new AndroidDriver();
-
-		} else {
+    } else {
 
 			// HTMLunit Check
 			if (username != null && password != null) {
