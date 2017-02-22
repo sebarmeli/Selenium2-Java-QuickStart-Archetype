@@ -61,7 +61,7 @@ For more info around TestNG framework, go to http://testng.org/doc/index.html. I
 
 Page Object pattern
 -------------------
-For more info around this pattern, read this wiki page: http://code.google.com/p/selenium/wiki/PageObjects
+For more info around this pattern, read this wiki page: https://github.com/SeleniumHQ/selenium/wiki/PageObjects
 
 
 Integration with SauceLabs
